@@ -193,7 +193,7 @@ function process_streets(way)
     local covered = way.tags.covered
     local service = way.tags.service
     local bridgeBool = toBridgeBool(way.tags.bridge)
-    if not highway or not railway then
+    if not highway and not railway then
         return
     end
     local layer = tonumber(way.tags.layer)
