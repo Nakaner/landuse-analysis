@@ -45,6 +45,13 @@ tables.land = osm2pgsql.define_area_table('land', {
     { column = 'geom',    type = 'geometry', projection = 4326 },
 })
 
+tables.admin_boundaries = osm2pgsql.define_area_table('admin_boundaries', {
+    { column = 'admin_level',    type = 'smallint' },
+    { column = 'name',    type = 'text' },
+    { column = 'tags',    type = 'hstore' },
+    { column = 'geom',    type = 'geometry', projection = 4326 },
+})
+
 -- A table listing all OSM values accepted for a given OSM key.
 -- This is implemented by using the OSM values as keys in the Lua table and assigning the value true to them.
 function Set(list)
@@ -141,7 +148,7 @@ end
 
 function osm2pgsql.process_relation(object)
     local rel_type = object.tags.type
-    if object.tags.type == "multipolygon" then
+    if rel_type == "multipolygon" or rel_type == "boundary" then
         process_area(object)
         process_area_default_linear(object)
     end
@@ -156,6 +163,29 @@ end
 
 function process_area(object)
     process_land(object)
+    process_admin_boundary(object)
+end
+
+function process_admin_boundary(obj)
+    if obj.type ~= "relation" then
+        return
+    end
+    local boundary = obj.tags.boundary
+    local admin_level = obj.tags.admin_level
+    if boundary ~= "administrative" or not admin_level then
+        return
+    end
+    local al = tonumber(admin_level)
+    if not al or al > 8 or al < 2 then
+        return
+    end
+    row = {
+        admin_level = al,
+        name = obj.tags.name,
+        tags = obj.tags,
+        geom = { create = "area" }
+    }
+    tables.admin_boundaries:add_row(row)
 end
 
 function process_land(obj)
