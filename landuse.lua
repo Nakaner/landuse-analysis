@@ -71,7 +71,8 @@ land_tourism_values = Set { "camp_site", "caravan_site", "zoo", "theme_park" }
 land_man_made_values = Set { "wastewater_plant", "water_works" }
 highway_values = Set { "motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link", "unclassified", "residential", "service", "road", "living_street", "pedestrian", "track", "path", "footway", "cycleway", "bridleway", "steps", "construction", "busway", "bus_guideway" }
 railway_values = Set { "rail", "narrow_gauge", "subway", "light_rail", "tram", "monorail", "funicular", "construction", "disused", "abandoned", "razed" }
-unwanted_natural_values = Set { "bay", "strait" }
+unwanted_natural_values = Set { "bay", "strait", "mountain_range", "crater_rim", "peninsula", "valley" }
+unwanted_landuse_values = Set { "winter_sports" }
 unwanted_military_values = Set { "danger_area", "nuclear_explosion_site", "office" }
 
 -- Check if provided OSM tag value is accepted. If true, return it. If false, return nil.
@@ -189,7 +190,7 @@ function process_admin_boundary(obj)
 end
 
 function process_land(obj)
-    local landuse = obj.tags.landuse
+    local landuse = drop_unwanted_values(obj.tags.landuse, unwanted_landuse_values)
     local waterway = obj.tags.waterway
     local natural = drop_unwanted_values(obj.tags.natural, unwanted_natural_values)
     local military = drop_unwanted_values(obj.tags.military, unwanted_military_values)
