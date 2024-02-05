@@ -43,6 +43,7 @@ tables.land = osm2pgsql.define_area_table('land', {
     { column = 'landuse',    type = 'text' },
     { column = 'tags',    type = 'hstore' },
     { column = 'geom',    type = 'geometry', projection = 4326 },
+    { column = 'area',    type = 'real' },
 })
 
 tables.admin_boundaries = osm2pgsql.define_area_table('admin_boundaries', {
@@ -209,7 +210,8 @@ function process_land(obj)
             tourism = tourism,
             man_made = man_made,
             tags = obj.tags,
-            geom = { create = "area" }
+            geom = { create = "area" },
+            area = obj:as_multipolygon():spherical_area(),
         }
         tables.land:add_row(row)
     end
