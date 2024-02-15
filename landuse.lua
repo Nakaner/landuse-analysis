@@ -48,6 +48,7 @@ tables.land = osm2pgsql.define_area_table('land', {
     { column = 'tags',    type = 'hstore' },
     { column = 'geom',    type = 'geometry', projection = 4326 },
     { column = 'area',    type = 'real' },
+    { column = 'mp_outer_way_count', type = 'integer' },
 })
 
 tables.admin_boundaries = osm2pgsql.define_area_table('admin_boundaries', {
@@ -145,7 +146,7 @@ function osm2pgsql.process_way(object)
         process_streets(object)
     end
     if is_area then
-        process_area(object)
+        process_area(object, false)
     end
     if is_area_default_linear then
         process_street_polygons(object)
@@ -155,7 +156,7 @@ end
 function osm2pgsql.process_relation(object)
     local rel_type = object.tags.type
     if rel_type == "multipolygon" or rel_type == "boundary" then
-        process_area(object)
+        process_area(object, true)
         process_area_default_linear(object)
     end
 end
@@ -167,8 +168,8 @@ function process_area_default_linear(object)
     end
 end
 
-function process_area(object)
-    process_land(object)
+function process_area(object, is_relation)
+    process_land(object, is_relation)
     process_admin_boundary(object)
 end
 
@@ -194,7 +195,7 @@ function process_admin_boundary(obj)
     tables.admin_boundaries:add_row(row)
 end
 
-function process_land(obj)
+function process_land(obj, is_relation)
     local landuse = drop_unwanted_values(obj.tags.landuse, unwanted_landuse_values)
     local waterway = obj.tags.waterway
     local natural = drop_unwanted_values(obj.tags.natural, unwanted_natural_values)
@@ -205,6 +206,14 @@ function process_land(obj)
     local man_made = valueAcceptedOrNil(land_man_made_values, obj.tags.man_made)
     local leisure = valueAcceptedOrNil(land_leisure_values, obj.tags.leisure)
     if keep or amenity or tourism or man_made or leisure then
+        local outer_way_member_count = 0
+        if is_relation then
+            for _, member in ipairs(obj.members) do
+                if member.type == 'w' and member.role == "outer" then
+                    outer_way_member_count = outer_way_member_count + 1
+                end
+            end
+        end
         row = {
             natural = natural,
             waterway = waterway,
@@ -215,6 +224,7 @@ function process_land(obj)
             man_made = man_made,
             tags = obj.tags,
             geom = { create = "area" },
+            mp_outer_way_count = outer_way_member_count,
             area = obj:as_multipolygon():spherical_area(),
         }
         tables.land:add_row(row)
