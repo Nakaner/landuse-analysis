@@ -37,14 +37,7 @@ tables.streets = osm2pgsql.define_way_table('streets', {
 })
 
 tables.land = osm2pgsql.define_area_table('land', {
-    { column = 'natural',    type = 'text' },
-    { column = 'waterway',    type = 'text' },
-    { column = 'water',    type = 'text' },
-    { column = 'landuse',    type = 'text' },
-    { column = 'military',    type = 'text' },
-    { column = 'amenity',    type = 'text' },
-    { column = 'man_made',    type = 'text' },
-    { column = 'leisure',    type = 'text' },
+    { column = 'feature',    type = 'text' },
     { column = 'tags',    type = 'hstore' },
     { column = 'geom',    type = 'geometry', projection = 4326 },
     { column = 'area',    type = 'real' },
@@ -126,6 +119,17 @@ function yesToBool(value)
     return false
 end
 
+-- Return first argument which is not nil.
+function coalesce(landuse, waterway, natural, military, amenity, tourism, man_made, leisure)
+    local arg = {landuse, waterway, natural, military, amenity, tourism, man_made, leisure}
+    for i=1,8 do
+        if arg[i] then
+            return arg[i]
+        end
+    end
+    return nil
+end
+
 function osm2pgsql.process_way(object)
     if osm2pgsql.stage == 2 then
         return
@@ -200,12 +204,12 @@ function process_land(obj, is_relation)
     local waterway = obj.tags.waterway
     local natural = drop_unwanted_values(obj.tags.natural, unwanted_natural_values)
     local military = drop_unwanted_values(obj.tags.military, unwanted_military_values)
-    local keep = (landuse ~= nil or waterway ~= nil or natural ~= nil or military ~= nil)
     local amenity = valueAcceptedOrNil(land_amenity_values, obj.tags.amenity)
     local tourism = valueAcceptedOrNil(land_tourism_values, obj.tags.tourism)
     local man_made = valueAcceptedOrNil(land_man_made_values, obj.tags.man_made)
     local leisure = valueAcceptedOrNil(land_leisure_values, obj.tags.leisure)
-    if keep or amenity or tourism or man_made or leisure then
+    local feature = coalesce(landuse, waterway, natural, military, amenity, tourism, man_made, leisure)
+    if feature ~= nil then
         local outer_way_member_count = 0
         if is_relation then
             for _, member in ipairs(obj.members) do
@@ -215,13 +219,7 @@ function process_land(obj, is_relation)
             end
         end
         row = {
-            natural = natural,
-            waterway = waterway,
-            landuse = landuse,
-            leisure = leisure,
-            amenity = amenity,
-            tourism = tourism,
-            man_made = man_made,
+            feature = feature,
             tags = obj.tags,
             geom = { create = "area" },
             mp_outer_way_count = outer_way_member_count,
