@@ -194,9 +194,9 @@ function process_admin_boundary(obj)
         admin_level = al,
         name = obj.tags.name,
         tags = obj.tags,
-        geom = { create = "area" }
+        geom = obj:as_multipolygon()
     }
-    tables.admin_boundaries:add_row(row)
+    tables.admin_boundaries:insert(row)
 end
 
 function process_land(obj, is_relation)
@@ -218,14 +218,15 @@ function process_land(obj, is_relation)
                 end
             end
         end
+	poly = obj:as_multipolygon()
         row = {
             feature = feature,
             tags = obj.tags,
-            geom = { create = "area" },
+            geom = poly,
             mp_outer_way_count = outer_way_member_count,
-            area = obj:as_multipolygon():spherical_area(),
+            area = poly:spherical_area(),
         }
-        tables.land:add_row(row)
+        tables.land:insert(row)
     end
 end
 
@@ -256,9 +257,9 @@ function process_streets(way)
         bridge = bridgeBool,
         layer = layer,
         tags = way.tags,
-        geom = { create = "line" }
+        geom = way:as_linestring()
     }
-    tables.streets:add_row(row)
+    tables.streets:insert(row)
 end
 
 function process_street_polygons(way)
@@ -279,9 +280,9 @@ function process_street_polygons(way)
         bridge = bridgeBool,
         layer = layer,
         tags = way.tags,
-        geom = { create = 'area' }
+        geom = way:as_multipolygon()
     }
-    tables.street_polygons:add_row(row)
+    tables.street_polygons:insert(row)
 end
 
 function toTunnelBool(tunnel, covered)
@@ -307,13 +308,13 @@ function process_water_lines(way)
         local tunnel = toTunnelBool(way.tags.tunnel, way.tags.covered)
         local bridge = toBridgeBool(way.tags.bridge)
         local layer = layerNumeric(way)
-        tables.water_lines:add_row({
+        tables.water_lines:insert({
             waterway = waterway,
             tunnel = tunnel,
             bridge = bridge,
             layer = layer,
             tags = way.tags,
-            geom = { create = 'line' }
+            geom = way:as_linestring()
         })
     end
 end
