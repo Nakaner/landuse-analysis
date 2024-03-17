@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
+    <link
+      href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="map" style="width: 100vw; height: 100vh"></div>
+    <script>
+      var map = new maplibregl.Map({
+        container: "map",
+        attributionControl: {
+          compact: false,
+          customAttribution:
+            '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>',
+        },
+        style: "./map_style.json", // stylesheet location
+        center: [9.09,48.98], // starting position [lng, lat]
+        zoom: 9, // starting zoom
+      });
+    </script>
+  </body>
+</html>

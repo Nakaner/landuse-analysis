@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Malen nach Zahlen – Landnutzungserfassung in OpenStreetMap in Deutschland</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="custom.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                                <section>
+				    <section data-markdown>
+                                        # Malen nach Zahlen – Landnutzungserfassung in OpenStreetMap in Deutschland 
+
+                                        Michael Reichert
+
+                                        FOSSGIS-Konferenz 2024
+                                    </section>
+				    <section data-markdown>
+                                        ## Gliederung
+
+                                        * Motivation
+                                        * Tagging
+                                        * Flächendeckung und Überlappung
+                                        * Multipolygon-Relationen
+                                        * Kleben oder Trennen
+                                        * Alter
+                                        * Technisches zur Auswertung
+                                    </section>
+                                </section>
+                                <section>
+                                    <h2>Motivation</h2>
+                                    <div class="r-stack">
+                                        <img class="fragment" src="img/forum-de-landuse.png">
+                                        <img class="fragment" style="transform: rotate(15deg);" src="img/forum-de-multipolygon.png">
+                                        <img class="fragment" style="transform: rotate(25deg);" src="img/forum-de-multipolygon-wahnsinn.png">
+                                        <img class="fragment" style="transform: rotate(-25deg);" src="img/forum-de-verkleben-landuse.png">
+                                    </div>
+                                </section>
+				<section class="tags-slide">
+                                    <h2>Was ist Landnutzung?</h2>
+                                    <p>
+                                            <span class="osmtag">
+                                                landuse&nbsp;=&nbsp;*
+                                                waterway&nbsp;=&nbsp;*
+                                                natural&nbsp;=&nbsp;*
+                                                military&nbsp;=&nbsp;*
+                                            </spanp>
+                                    </p>
+                                    <div class="tags-slide-table">
+                                        <div class="cols2" style="flex-grow: 1;">
+                                            <p>Außer:</p>
+                                            <p class="osmtag">landuse&nbsp;= <br><span class="strike">winter_sports</span></p>
+                                            <p class="osmtag">natural&nbsp;= <span class="strike">bay, strait, mountain_range, crater_rim, peninsula, valley</span></p>
+                                            <p class="osmtag">military&nbsp;= <span class="strike">danger_area, nuclear_explosion_site, office</span></p>
+                                        </div>
+                                        <div class="cols2" style="flex-grow: 2;">
+                                            <p>Auch:</p>
+                                            <p class="osmtag">amenity&nbsp;= police, fire_station, prison, nursing_home,</p>
+                                            <p class="osmtag">tourism&nbsp;= camp_site, caravan_site, zoo, theme_park</p>
+                                            <p class="osmtag">man_made&nbsp;= wastewater_plant, water_works</p>
+                                            <p class="osmtag">leisure&nbsp;= playground, dog_park, sports_centre, water_park, golf_course, stadium, ice_rink </p>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section>
+				    <section data-markdown>
+                                        ## Flächendeckung
+                                        
+                                        * komplizierter als man denkt
+                                        * überlappende Erfassung
+                                        * Definitionslücken
+                                    </section>
+				    <section data-markdown>
+                                        Flächendeckung pro Gemeinde hier einbinden
+                                    </section>
+                                </section>
+                                <section>
+				    <section data-markdown>
+                                        ## Überlappung
+                                        
+                                        * XXX Matrix einfügen
+                                    </section>
+				    <section data-markdown>
+                                        ### Typische Überlappungen
+
+                                        * `farmland`/`farmland`
+                                        * XXX
+                                    </section>
+                                </section>
+                                <section>
+				    <section data-markdown>
+                                        ## Multipolygone
+                                        
+                                        * XXX was ist das (XXX Bild aus dem Wiki) 
+                                        * XXX Ruf
+                                        * XXX unnötige Multipolygone
+                                    </section>
+                                </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

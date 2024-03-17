@@ -1,0 +1,20 @@
+.strike {
+    text-decoration: line-through;
+}
+.osmtag {
+    font-family: monospace;
+}
+.tags-slide {
+    font-size: 0.8em;
+}
+.tags-slide-table {
+    display: flex;
+    font-size: 0.7em;
+}
+.tags-slide .cols2 {
+    text-align: left;
+}
+.cols2 {
+    margin-left: 3%;
+    margin-right: 3%;
+}

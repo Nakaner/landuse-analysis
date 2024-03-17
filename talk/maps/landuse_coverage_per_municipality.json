@@ -1,0 +1,28 @@
+{
+  "version": 8,
+  "name": "Coverage of landcover by municipality",
+  "metadata": { "maputnik:renderer": "mlgljs" },
+  "sources": {
+    "landuse-analysis": {
+      "type": "vector",
+      "tiles": ["../tiles/{z}/{x}/{y}.pbf"]
+    }
+  },
+  "sprite": "/sprites/",
+  "glyphs": "/fonts/{fontstack}/{range}",
+  "layers": [
+    {
+      "id": "bg",
+      "type": "background",
+      "paint": { "background-color": "#F2EFE9" }
+    },
+    {
+      "id": "landuse_coverage_per_municipality",
+      "type": "fill",
+      "source": "landuse-analysis",
+      "source-layer": "landuse_coverage_per_municipality",
+      "paint": { "fill-color": "#AAD3DF" }
+    }
+  ],
+  "id": "landuse_coverage_per_municipality"
+}
