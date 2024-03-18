@@ -9,7 +9,7 @@ cache_size_mb: 128
 
 # Database configuration. This can also be a list of PG configs.
 postgres:
-  connection_string: 'postgresql://michael@localhost:5432/landuse'
+  connection_string: 'postgresql:///landuse?host=/var/run/postgresql/'
 
   #  If a spatial table has SRID 0, then this SRID will be used as a fallback
   default_srid: 4326
@@ -104,7 +104,51 @@ postgres:
         area_size: float8
         city_area: float8
         city_id: int8
-        name: text
+        city_name: text
+    multipolygonitis_score:
+      schema: public
+      table: multipolygonitis_score
+      srid: 4326
+      geometry_column: city_geom
+      id_column: ~
+      minzoom: 0
+      maxzoom: 14
+      bounds: [5.86,47.27,15.05,55.1]
+      extent: 4096
+      buffer: 64
+      clip_geom: true
+      geometry_type: GEOMETRY
+      properties:
+        landuse_area: float8
+        landuse_count: int8
+        multipolygon_area: float8
+        multipolygon_count: int8
+        city_id: int8
+        city_name: text
+        city_area: float8
+    roads_landuse_boundary_fraction_per_city:
+      schema: public
+      table: roads_landuse_boundary_fraction_per_city
+      srid: 4326
+      geometry_column: city_geom
+      id_column: ~
+      minzoom: 0
+      maxzoom: 14
+      bounds: [5.86,47.27,15.05,55.1]
+      extent: 4096
+      buffer: 64
+      clip_geom: true
+      geometry_type: GEOMETRY
+      properties:
+        landuse_boundaries_on_roads_fraction: float8
+        landuse_boundaries_on_roads: float8
+        landuse_boundary_length: float8
+        roads_as_landuse_boundary_fraction: float8
+        roads_as_landuse_boundary_length: float8
+        road_network_length: float8
+        coverage_fraction: float8
+        city_id: int8
+        city_name: text
   
 #  # Associative arrays of function sources
 #  functions:
