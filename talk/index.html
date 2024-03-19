@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
 		<link rel="stylesheet" href="custom.css">
 
 		<!-- Theme used for syntax highlighted code -->
@@ -47,7 +47,7 @@
                                     </div>
                                 </section>
 				<section class="tags-slide">
-                                    <h2>Was ist Landnutzung?</h2>
+                                    <h2>Definiere Landnutzung …</h2>
                                     <p>
                                             <span class="osmtag">
                                                 landuse&nbsp;=&nbsp;*
@@ -74,38 +74,68 @@
                                 </section>
                                 <section>
 				    <section data-markdown>
-                                        ## Flächendeckung
-                                        
-                                        * komplizierter als man denkt
-                                        * überlappende Erfassung
-                                        * Definitionslücken
+                                        ## Featureklassen
+
+                                        ![Verteilung der Featureklassen](plots/feature_classes_with_overlaps.svg)
                                     </section>
-				    <section data-markdown>
-                                        Flächendeckung pro Gemeinde hier einbinden
+				    <section>
+                                        <h2>Flächendeckung pro Gemeinde</h2>
+                                        <iframe src="maps/landuse_coverage_per_municipality.html" width="900" height="500"></iframe>
                                     </section>
-                                </section>
-                                <section>
 				    <section data-markdown>
                                         ## Überlappung
                                         
-                                        * XXX Matrix einfügen
+                                        ![Verteilung der Featureklassen](plots/overlaps_matrix.svg)
                                     </section>
 				    <section data-markdown>
-                                        ### Typische Überlappungen
+                                        ## Featureklassen (Überlappungen eliminiert)
 
-                                        * `farmland`/`farmland`
-                                        * XXX
+                                        ![Verteilung der Featureklassen](plots/feature_classes_without_overlaps.svg)
+                                    </section>
+                                </section>
+                                <section style="font-size: 90%;" class="multipolygon-slides">
+				    <section>
+                                        <h2>Multipolygone (Einführung)</h2>
+
+                                        <img alt="einfacher Way" src="img/Multipolygon_Illustration_0.svg">
+
+                                        <p>Way 1: <span class="osmtag">landuse=forest</span></p>
+                                    </section>
+				    <section>
+                                        <h2>Multipolygone (Einführung)</h2>
+
+                                        <img alt="Multipolygon-Relation mit einem inneren Ring" src="img/Multipolygon_Illustration_1.svg">
+
+                                        <p>Relation 1: <span class="osmtag">type=multipolygon</span> + <span class="osmtag">landuse=forest</span><br>
+                                        Way 1: keine Tags<br>
+                                        Way 2: irgendwelche Tags</p>
+                                    </section>
+				    <section>
+                                        <h2>Multipolygone (Einführung)</h2>
+
+                                        <img alt="Multipolygon-Relation mit zwei inneren Ringen" src="img/Multipolygon_Illustration_2.svg">
+
+                                        <p>Relation 1: <span class="osmtag">type=multipolygon</span> + <span class="osmtag">landuse=forest</span><br>
+                                        Way 1: keine Tags<br>
+                                        Way 2: irgendwelche Tags<br>
+                                        Way 3: irgendwelche Tags</p>
+                                    </section>
+				    <section>
+                                        <h2>Multipolygone (Einführung)</h2>
+
+                                        <img alt="Multipolygon-Relation mit zwei äußeren Ways" src="img/Multipolygon_Illustration_3a.svg">
+
+                                        <p>Relation 1: <span class="osmtag">type=multipolygon</span> + <span class="osmtag">landuse=forest</span><br>
+                                        Way 1: irgendwelche Tags, z.B. <span class="osmtag">highway=primary</span><br>
+                                        Way 2: irgendwelche Tags, z.B. <span class="osmtag">highway=track</span></p>
                                     </section>
                                 </section>
                                 <section>
 				    <section data-markdown>
                                         ## Multipolygone
-                                        
-                                        * XXX was ist das (XXX Bild aus dem Wiki) 
-                                        * XXX Ruf
-                                        * XXX unnötige Multipolygone
+
+                                        ![Verteilung der Featureklassen](plots/)
                                     </section>
-                                </section>
 			</div>
 		</div>
 

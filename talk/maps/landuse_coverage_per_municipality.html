@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="data:," />
@@ -8,22 +8,11 @@
       href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css"
       rel="stylesheet"
     />
+    <link href="maps.css" rel="stylesheet" />
   </head>
 
   <body>
-    <div id="map" style="width: 100vw; height: 100vh"></div>
-    <script>
-      var map = new maplibregl.Map({
-        container: "map",
-        attributionControl: {
-          compact: false,
-          customAttribution:
-            '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>',
-        },
-        style: "./map_style.json", // stylesheet location
-        center: [9.09,48.98], // starting position [lng, lat]
-        zoom: 9, // starting zoom
-      });
-    </script>
+    <div id="map" style="position: fixed; width: calc(100% - 20px); height: calc(100% - 20px);"></div>
+    <script src="landuse_coverage_per_municipality.js"></script>
   </body>
 </html>

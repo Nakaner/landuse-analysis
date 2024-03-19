@@ -4,6 +4,9 @@
 .osmtag {
     font-family: monospace;
 }
+.multipolygon-slides .osmtag {
+    font-size: 80%;
+}
 .tags-slide {
     font-size: 0.8em;
 }

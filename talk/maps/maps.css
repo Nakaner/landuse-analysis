@@ -1,0 +1,10 @@
+body,
+.maplibregl-map {
+    font-size: 16px;
+}
+
+#map {
+    position: fixed;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+}
