@@ -152,6 +152,49 @@
                                         <h2>Unnötige Multipolygone pro Gemeinde</h2>
                                         <iframe src="maps/multipolygonitis_score.html" width="900" height="500"></iframe>
                                     </section>
+                                </section>
+                                <section>
+				    <section>
+                                        <h2>Trennung von Verkehrswegen und Landnutzung</h2>
+
+                                        <img height="300" src="img/separated_landuse.svg">
+                                        <img height="300" src="img/sticky_landuse.svg">
+                                    </section>
+				    <section>
+                                        <h2>Mit Straßen verbundene Landnutzung</h2>
+
+                                        <img height="400" src="img/sticky_landuse_josm.jpg">
+                                    </section>
+				    <section>
+                                        <h2>Von Straßen getrennte Landnutzung</h2>
+
+                                        <img height="400" src="img/separated_landuse_josm.jpg">
+                                    </section>
+				    <section>
+                                        <h2>Von Straßen getrennte Landnutzung</h2>
+
+                                        <img height="400" src="img/almost_touching_landuse_josm.jpg">
+                                    </section>
+                                </section>
+                                <section>
+				    <section data-markdown>
+                                        ## Technik
+
+                                        * Datenimport: Osm2pgsql, Flex-Output, eigene Konfiguration
+                                        * Auswertung: PostgreSQL und etwas Python (via Jupyter Notebook)
+                                        * Plots: Matplotlib
+                                        * Karten: Shortbread, Versatiles Neutrino, Martin, Maplibre GL JS
+
+                                        https://github.com/nakaner/landuse-analysis
+                                    </section>
+				    <section data-markdown>
+                                        ## Fragen?                                       
+
+                                        Michael Reichert
+
+                                        osm-ml@michreichert.de
+                                    </section>
+                                </section>
 			</div>
 		</div>
 
