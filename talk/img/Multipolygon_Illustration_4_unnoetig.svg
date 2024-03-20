@@ -7,7 +7,7 @@
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
-   sodipodi:docname="Multipolygon_Illustration_1.svg"
+   sodipodi:docname="Multipolygon_Illustration_4_unnoetig.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -37,9 +37,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.1147757"
-     inkscape:cx="245.17967"
-     inkscape:cy="197.42046"
+     inkscape:zoom="1.0573879"
+     inkscape:cx="106.39426"
+     inkscape:cy="190.56394"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="true"
@@ -47,8 +47,6 @@
      inkscape:window-height="1136"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:object-paths="false"
-     inkscape:object-nodes="true"
      inkscape:pagecheckerboard="0"
      inkscape:window-maximized="1">
     <inkscape:grid
@@ -192,46 +190,25 @@
      id="layer2"
      inkscape:label="poly"
      transform="translate(-49.835,-102.19718)">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;line-height:0%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="320.06989"
-       y="169.18175"
-       id="text3214"><tspan
-         sodipodi:role="line"
-         id="tspan3216"
-         x="320.06989"
-         y="169.18175"
-         style="font-size:12px;line-height:1.25">way #1</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;line-height:0%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="235.63391"
-       y="277.89648"
-       id="text3218"><tspan
-         sodipodi:role="line"
-         id="tspan3220"
-         x="235.63391"
-         y="277.89648"
-         style="font-size:12px;line-height:1.25">way #2</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 317.41372,169.18175 L 300,177.36218"
-       id="path3222"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 270,267.36218 L 282.26403,245.18687"
-       id="path3224"
-       sodipodi:nodetypes="cc" />
-    <path
-       id="path3210"
        style="opacity:1;fill:#dcdcdc;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 250,152.36218 L 350,202.36218 L 375,302.36218 L 250,377.36218 L 175,277.36218 L 250,152.36218 z M 250,227.36218 L 300,252.36218 L 275,302.36218 L 225,277.36218 L 250,227.36218 z" />
+       d="M 150,152.36218 L 250,202.36218 L 275,302.36218 L 150,377.36218 L 75,277.36218 L 150,152.36218 z"
+       id="path4782" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000580;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 200,125.33002 L 250,150.33002 L 225,200.33002 L 175,175.33002 L 200,125.33002 z"
-       id="path2416"
-       transform="translate(49.835,102.19718)" />
+       style="opacity:1;fill:#dcdcdc;fill-opacity:1;fill-rule:evenodd;stroke:#000580;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 325,152.36218 L 425,227.36218 L 350,377.36218 L 300,302.36218 L 275,202.36218 L 325,152.36218 z"
+       id="path4780"
+       sodipodi:nodetypes="cccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="256.01282"
+       y="273.26218"
+       id="text9947"><tspan
+         sodipodi:role="line"
+         id="tspan9945"
+         x="256.01282"
+         y="273.26218"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle">oft unnötig</tspan></text>
   </g>
 </svg>

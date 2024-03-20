@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.0"
    width="400.32999"
    height="325.33002"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
-   sodipodi:docname="mp2.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="Multipolygon_Illustration_3.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <metadata
      id="metadata5158">
     <rdf:RDF>
@@ -28,8 +29,8 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     inkscape:window-height="722"
-     inkscape:window-width="1324"
+     inkscape:window-height="1136"
+     inkscape:window-width="1850"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      guidetolerance="10.0"
@@ -41,12 +42,14 @@
      id="base"
      showgrid="true"
      inkscape:zoom="1.3513851"
-     inkscape:cx="87.317819"
-     inkscape:cy="162.66501"
+     inkscape:cx="42.548937"
+     inkscape:cy="162.42594"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="0"
      inkscape:current-layer="layer2"
-     inkscape:object-nodes="true" />
+     inkscape:object-nodes="true"
+     inkscape:pagecheckerboard="0"
+     inkscape:window-maximized="1" />
   <defs
      id="defs4">
     <marker
@@ -218,7 +221,7 @@
        y="169.18175"
        id="text3214"
        xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:0%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><tspan
          x="320.06989"
          y="169.18175"
          id="tspan3216">way #1</tspan></text>
@@ -227,7 +230,7 @@
        y="277.89648"
        id="text3218"
        xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:0%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><tspan
          x="235.63391"
          y="277.89648"
          id="tspan3220">way #3</tspan></text>
@@ -246,13 +249,13 @@
     <path
        d="M 175,277.36218 L 250,377.36218 L 375,302.36218 L 350,202.36218"
        id="path4713"
-       style="fill:none;fill-rule:evenodd;stroke:#008000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#DotM)" />
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#DotM)" />
     <text
        x="160"
        y="369.36218"
        id="text4715"
        xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:0%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><tspan
          x="160"
          y="369.36218"
          id="tspan4717">way #2</tspan></text>

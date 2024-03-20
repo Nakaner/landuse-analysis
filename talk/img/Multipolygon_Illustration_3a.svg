@@ -41,9 +41,9 @@
      pagecolor="#ffffff"
      id="base"
      showgrid="true"
-     inkscape:zoom="0.67569255"
-     inkscape:cx="191.65521"
-     inkscape:cy="176.85558"
+     inkscape:zoom="1.9111471"
+     inkscape:cx="245.14073"
+     inkscape:cy="193.33938"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:current-layer="layer2"
@@ -237,7 +237,7 @@
     <path
        d="M 175,277.36218 L 250,377.36218 L 375,302.36218 L 350,202.36218"
        id="path4713"
-       style="fill:none;fill-rule:evenodd;stroke:#008000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#DotM)" />
+       style="fill:none;fill-rule:evenodd;stroke:#000580;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#DotM)" />
     <text
        x="160"
        y="369.36218"
