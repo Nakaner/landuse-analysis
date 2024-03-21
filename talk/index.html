@@ -175,6 +175,51 @@
 
                                         <img height="400" src="img/almost_touching_landuse_josm.jpg">
                                     </section>
+				    <section class="smaller-font">
+                                        <h2>Mit Straßen verklebte Landnutzung</h2>
+                                        <p>Länge der verklebten Straßen bezogen auf gesamte Straßennetzlänge</p>
+                                        <iframe src="maps/roads_as_landuse_boundary_fraction.html" width="900" height="500"></iframe>
+                                    </section>
+				    <section class="smaller-font">
+                                        <h2>Beinahe Straßen verklebte Landnutzung</h2>
+                                        <p>Länge der beinahe verklebten Straßen bezogen auf gesamte Straßennetzlänge (Abstand max. 0,5 m)</p>
+                                        <iframe src="maps/almost_sticky_roads.html" width="900" height="500"></iframe>
+                                    </section>
+                                </section>
+                                <section>
+				    <section>
+                                        <h2>Wie alt sind unsere Wälder?</h2>
+
+                                        <img alt="Screenshot JOSM eines Waldes von 2008" src="img/landsat-wald.jpg" height="450">
+
+                                        <p style="font-size: 60%;">Wald bei Eiterfeld (Kr. Fulda) aus dem Jahr 2008 (vermutlich mit Yahoo- oder Landsat-Bildern)</p>
+                                    </section>
+				    <section data-markdown>
+                                        ## Alter der Objekte
+
+                                        Versionsgeschichte schwierig auszuwerten:
+
+                                        * Teilen von Ways
+                                        * mechanische Edits an Tags
+                                        * Hinzufügen einzelner Nodes
+
+                                        Lösung: Nodes auswerten
+                                    </section>
+				    <section data-markdown>
+                                        ## Alter der Nodes
+
+                                        ![Plot Histogramm Node-Alter](plots/node_age_histogram.svg)
+                                    </section>
+				    <section data-markdown>
+                                        ## Median-Alter der Nodes der Polygone
+
+                                        ![Plot Histogramm Median des Node-Alters der Polygone](plots/median_node_age_histogram.svg)
+                                    </section>
+				    <section>
+                                        <h2>Wo sind die alten Polygone?</h2>
+                                        <p>Median-Alter der Nodes pro Gemeinde</p>
+                                        <iframe src="maps/median_node_age.html" width="900" height="450"></iframe>
+                                    </section>
                                 </section>
                                 <section>
 				    <section data-markdown>

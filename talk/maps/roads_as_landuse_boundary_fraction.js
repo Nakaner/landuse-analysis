@@ -6,7 +6,7 @@ function round(value, decimals) {
 
 function buildLabel(properties) {
     var fraction = "n/a";
-    if (properties.hasOwnProperty('road_as_landuse_boundary_fraction')) {
+    if (properties.hasOwnProperty('roads_as_landuse_boundary_fraction')) {
         fraction = round(properties.roads_as_landuse_boundary_fraction * 100, 1)
     }
     const p1 = document.createElement("p");

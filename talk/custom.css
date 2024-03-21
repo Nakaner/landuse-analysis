@@ -21,3 +21,11 @@
     margin-left: 3%;
     margin-right: 3%;
 }
+
+section.smaller-font h2 {
+    font-size: 1.2em;
+}
+
+section.smaller-font p {
+    font-size: 38px;
+}
