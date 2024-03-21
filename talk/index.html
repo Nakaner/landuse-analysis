@@ -18,12 +18,12 @@
 		<div class="reveal">
 			<div class="slides">
                                 <section>
-				    <section data-markdown>
-                                        # Malen nach Zahlen – Landnutzungserfassung in OpenStreetMap in Deutschland 
+				    <section>
+                                        <h1 style="font-size: 180%;">Malen nach Zahlen – Landnutzungserfassung in OpenStreetMap in Deutschland</h1>
 
-                                        Michael Reichert
+                                        <p>Michael Reichert<br>
 
-                                        FOSSGIS-Konferenz 2024
+                                        FOSSGIS-Konferenz 2024, Hamburg</p>
                                     </section>
 				    <section data-markdown>
                                         ## Gliederung
@@ -83,12 +83,12 @@
                                         <iframe src="maps/landuse_coverage_per_municipality.html" width="900" height="500"></iframe>
                                     </section>
 				    <section data-markdown>
-                                        ## Überlappung
+                                        ## Überlappende Landnutzung
                                         
                                         ![Verteilung der Featureklassen](plots/overlaps_matrix.svg)
                                     </section>
 				    <section data-markdown>
-                                        ## Featureklassen (Überlappungen eliminiert)
+                                        ## Featureklassen
 
                                         ![Verteilung der Featureklassen](plots/feature_classes_without_overlaps.svg)
                                     </section>
@@ -177,14 +177,14 @@
                                     </section>
 				    <section class="smaller-font">
                                         <h2>Mit Straßen verklebte Landnutzung</h2>
-                                        <p>Länge der verklebten Straßen bezogen auf gesamte Straßennetzlänge</p>
+                                        <p style="font-size: 80%;">verklebten Straßen bezogen auf Netzlänge</p>
                                         <iframe src="maps/roads_as_landuse_boundary_fraction.html" width="900" height="500"></iframe>
                                     </section>
-				    <section class="smaller-font">
+				    <!--<section class="smaller-font">
                                         <h2>Beinahe Straßen verklebte Landnutzung</h2>
-                                        <p>Länge der beinahe verklebten Straßen bezogen auf gesamte Straßennetzlänge (Abstand max. 0,5 m)</p>
+                                        <p style="font-size: 80%;">beinahe verklebte Straßen bezogen auf Netzlänge (max. 0,5 m Abstand)</p>
                                         <iframe src="maps/almost_sticky_roads.html" width="900" height="500"></iframe>
-                                    </section>
+                                    </section>-->
                                 </section>
                                 <section>
 				    <section>
@@ -195,30 +195,31 @@
                                         <p style="font-size: 60%;">Wald bei Eiterfeld (Kr. Fulda) aus dem Jahr 2008 (vermutlich mit Yahoo- oder Landsat-Bildern)</p>
                                     </section>
 				    <section data-markdown>
-                                        ## Alter der Objekte
+                                        ## Alter eines Ways bestimmen?
 
                                         Versionsgeschichte schwierig auszuwerten:
 
                                         * Teilen von Ways
+                                        * bei Relationen: Mitgliedschaftsänderungen
                                         * mechanische Edits an Tags
                                         * Hinzufügen einzelner Nodes
 
-                                        Lösung: Nodes auswerten
+                                        → Lösung: Zeitstempel der letzten Änderung der Nodes auswerten
                                     </section>
 				    <section data-markdown>
-                                        ## Alter der Nodes
+                                        ## Median-Alter der Nodes der Landuse-Polygone
 
-                                        ![Plot Histogramm Node-Alter](plots/node_age_histogram.svg)
+                                        ![Plot Histogramm Median des Node-Alters der Polygone](plots/polygon_median_age_histogram.svg)
                                     </section>
 				    <section data-markdown>
-                                        ## Median-Alter der Nodes der Polygone
+                                        ## Median-Alter der Landuse-Nodes der Gemeinden
 
-                                        ![Plot Histogramm Median des Node-Alters der Polygone](plots/median_node_age_histogram.svg)
+                                        ![Plot Histogramm Node-Alter](plots/node_median_age_histogram_municipality.svg)
                                     </section>
 				    <section>
                                         <h2>Wo sind die alten Polygone?</h2>
                                         <p>Median-Alter der Nodes pro Gemeinde</p>
-                                        <iframe src="maps/median_node_age.html" width="900" height="450"></iframe>
+                                        <iframe src="maps/landuse_node_age_per_municipality_unix.html" width="900" height="450"></iframe>
                                     </section>
                                 </section>
                                 <section>
