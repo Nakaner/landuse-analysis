@@ -1,0 +1,11 @@
+wr/waterway
+wr/highway
+w/railway
+r/boundary=administrative
+a/amenity
+a/leisure
+a/tourism
+a/man_made
+a/natural
+a/landuse
+a/military

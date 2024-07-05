@@ -5,10 +5,16 @@ analyse landuse mapping patterns in OpenStreetMap in Germany.
 
 ## Loading data
 
+Filter OSM data to avoid import of unnecessary nodes:
+
+```sh
+osmium tags-filter -v --progress -o ~/jobs/landuse/europe-filtered.osm.pbf --expressions landuse.osmium europe-latest.osm.pbf
+```
+
 Import OSM data into PostgreSQL:
 
 ```sh
-osm2pgsql --slim --flat-nodes /nvme/michael/flat.nodes --style landuse.lua --output flex -d landuse europe.osm.pbf
+osm2pgsql -x --slim --style landuse.lua --output flex -d landuse europe-filtered.osm.pbf
 ```
 
 Load poly file into database:
@@ -26,6 +32,16 @@ Download ocean polygons (split) and load them into the database:
 wget https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
 unzip water-polygons-split-4326.zip
 PG_USE_COPY=YES ogr2ogr -f PostgreSQL PG:dbname=landuse water-polygons-split-4326/water_polygons.shp -gt 50000 -nln water_polygons_split
+wget https://osmdata.openstreetmap.de/download/coastlines-split-4326.zip
+unzip coastlines-split-4326.zip
+PG_USE_COPY=YES ogr2ogr -f PostgreSQL PG:dbname=landuse coastlines-split-4326/lines.shp -gt 50000 -nln coastlines_split
+```
+
+Download Nominatim country grid and load it into the databse:
+
+```sh
+wget https://nominatim.org/data/country_grid.sql.gz
+gzip -dc country_grid.sql.gz | psql -d landuse
 ```
 
 ## License
