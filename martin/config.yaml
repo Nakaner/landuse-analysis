@@ -9,7 +9,8 @@ cache_size_mb: 128
 
 # Database configuration. This can also be a list of PG configs.
 postgres:
-  connection_string: 'postgresql:///landuse?host=/var/run/postgresql/'
+  connection_string: 'postgresql:///landuse?host=localhost&user=michael'
+  #connection_string: 'postgresql:///landuse?host=/var/run/postgresql/'
 
   #  If a spatial table has SRID 0, then this SRID will be used as a fallback
   default_srid: 4326
@@ -56,21 +57,21 @@ postgres:
       
   # Associative arrays of table sources
   tables:
-    landuse_coverage_per_municipality:
+    landuse_coverage_per_cell:
       ## ID of the MVT layer (optional, defaults to table name)
-      #layer_id: landuse_coverage_per_municipality
+      #layer_id: landuse_coverage_per_cell
       
       # Table schema (required)
       schema: public
       
       # Table name (required)
-      table: landuse_coverage_per_municipality
+      table: landuse_coverage_per_cell
       
       # Geometry SRID (required)
       srid: 4326
       
       # Geometry column name (required)
-      geometry_column: city_geom
+      geometry_column: cell_geom
       
       # Feature id column name
       id_column: ~
@@ -85,7 +86,7 @@ postgres:
       # covered by all zoom levels. The bounds are represented in WGS:84
       # latitude and longitude values, in the order left, bottom, right, top.
       # Values may be integers or floating point numbers.
-      bounds: [5.86,47.27,15.05,55.1]
+      bounds: [-32.35,34.97,46.31,81.12]
       
       # Tile extent in tile coordinate space
       extent: 4096
@@ -102,18 +103,17 @@ postgres:
       # List of columns, that should be encoded as tile properties (required)
       properties:
         area_size: float8
-        city_area: float8
-        city_id: int8
-        city_name: text
+        cell_area: float8
+        cell_id: int8
     multipolygonitis_score:
       schema: public
       table: multipolygonitis_score
       srid: 4326
-      geometry_column: city_geom
+      geometry_column: cell_geom
       id_column: ~
       minzoom: 0
       maxzoom: 14
-      bounds: [5.86,47.27,15.05,55.1]
+      bounds: [-32.35,34.97,46.31,81.12]
       extent: 4096
       buffer: 64
       clip_geom: true
@@ -123,18 +123,17 @@ postgres:
         landuse_count: int8
         multipolygon_area: float8
         multipolygon_count: int8
-        city_id: int8
-        city_name: text
-        city_area: float8
-    roads_landuse_boundary_fraction_per_city:
+        cell_id: int8
+        cell_area: float8
+    roads_landuse_boundary_fraction_per_cell:
       schema: public
-      table: roads_landuse_boundary_fraction_per_city
+      table: roads_landuse_boundary_fraction_per_cell
       srid: 4326
-      geometry_column: city_geom
+      geometry_column: cell_geom
       id_column: ~
       minzoom: 0
       maxzoom: 14
-      bounds: [5.86,47.27,15.05,55.1]
+      bounds: [-32.35,34.97,46.31,81.12]
       extent: 4096
       buffer: 64
       clip_geom: true
@@ -147,8 +146,22 @@ postgres:
         roads_as_landuse_boundary_length: float8
         road_network_length: float8
         coverage_fraction: float8
-        city_id: int8
-        city_name: text
+        cell_id: int8
+    water:
+      schema: public
+      table: water_polygons_split
+      srid: 4326
+      geometry_column: wkb_geometry
+      id_column: ~
+      minzoom: 0
+      maxzoom: 14
+      bounds: [-32.35,34.97,46.31,81.12]
+      extent: 4096
+      buffer: 64
+      clip_geom: true
+      geometry_type: GEOMETRY
+      properties:
+        ogc_fid: int4
   
 #  # Associative arrays of function sources
 #  functions:
