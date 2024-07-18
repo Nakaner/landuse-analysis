@@ -12,7 +12,7 @@
 			"tilejson": "3.0.0",
 			"attribution": "© <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
 			"tiles": [
-				"https://tiles.versatiles.org/tiles/osm/{z}/{x}/{y}"
+				"https://tile.geofabrik.de/50b5264e13104292908d0ba70ebc60b2/v1.0/{z}/{x}/{y}.mvt"
 			],
 			"type": "vector",
 			"scheme": "xyz",

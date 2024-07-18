@@ -28,7 +28,7 @@ var map = new maplibregl.Map({
       customAttribution:
         '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>',
     },
-    style: "versatiles-style/neutrino.de.json",
+    style: "versatiles-style/neutrino.en.json",
     center: [9.09,48.98],
     zoom: 7,
 });
@@ -38,13 +38,13 @@ var step = (end - start) / 4;
 map.on('load', () => {
     map.addSource('landuse-analysis', {
       'type': 'vector',
-      'tiles': ['https://michreichert.de/projects/land-analysis/{z}/{x}/{y}.pbf']
+      'tiles': ['https://michreichert.de/projects/land-analysis-eu/{z}/{x}/{y}.pbf']
     });
     map.addLayer({
-        "id": "landuse_node_age_per_municipality_unix",
+        "id": "landuse_node_age_per_cell_unix",
         "type": "fill",
         "source": "landuse-analysis",
-        "source-layer": "landuse_node_age_per_municipality_unix",
+        "source-layer": "landuse_node_age_per_cell_unix",
         "filter": ["all"],
         "layout": {"visibility": "visible"},
         "paint": {
@@ -67,12 +67,11 @@ map.on('load', () => {
         }
     });
     map.addLayer({
-        "id": "landuse_node_age_per_municipality_unix_outline",
+        "id": "boundaries",
         "type": "line",
-        "source": "landuse-analysis",
-        "source-layer": "landuse_node_age_per_municipality_unix",
-        "minzoom": 6.5,
-        "filter": ["all"],
+        "source": "versatiles-shortbread",
+        "source-layer": "boundaries",
+        "filter": [ "all", [ "==", "admin_level", 2 ], [ "!=", "maritime", true ] ],
         "layout": {
             "visibility": "visible",
             "line-cap": "round",
@@ -80,19 +79,19 @@ map.on('load', () => {
         },
         "paint": {
             "line-color": "rgb(30, 30, 30)",
-            "line-width": 0.5
+            "line-width": 1.5
         }
     });
-    map.on('click', 'landuse_node_age_per_municipality_unix', (e) => {
+    map.on('click', 'landuse_node_age_per_cell_unix', (e) => {
         new maplibregl.Popup()
             .setLngLat(e.lngLat)
             .setDOMContent(buildLabel(e.features[0].properties))
             .addTo(map);
     });
-    map.on('mouseenter', 'landuse_node_age_per_municipality_unix', () => {
+    map.on('mouseenter', 'landuse_node_age_per_cell_unix', () => {
         map.getCanvas().style.cursor = 'pointer';
     });
-    map.on('mouseleave', 'landuse_node_age_per_municipality_unix', () => {
+    map.on('mouseleave', 'landuse_node_age_per_cell_unix', () => {
         map.getCanvas().style.cursor = '';
     });
 });

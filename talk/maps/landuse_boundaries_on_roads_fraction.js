@@ -11,7 +11,7 @@ function buildLabel(properties) {
     }
     const p1 = document.createElement("p");
     const p2 = document.createElement("p");
-    p1.appendChild(document.createTextNode(properties.city_name));
+    //p1.appendChild(document.createTextNode(properties.city_name));
     p2.appendChild(document.createTextNode(fraction + ' %'));
     const div = document.createElement("div");
     div.appendChild(p1);
@@ -27,21 +27,21 @@ var map = new maplibregl.Map({
       customAttribution:
         '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>',
     },
-    style: "versatiles-style/neutrino.de.json",
-    //style: "https://www.michreichert.de/projects/land-analysis/landuse_coverage_per_municipality.json", // stylesheet location
+    style: "versatiles-style/neutrino.en.json",
+    //style: "https://www.michreichert.de/projects/land-analysis-eu/landuse_coverage_per_municipality.json", // stylesheet location
     center: [9.09,48.98],
     zoom: 7,
 });
 map.on('load', () => {
     map.addSource('landuse-analysis', {
       'type': 'vector',
-      'tiles': ['https://michreichert.de/projects/land-analysis/{z}/{x}/{y}.pbf']
+      'tiles': ['https://michreichert.de/projects/land-analysis-eu/{z}/{x}/{y}.pbf']
     });
     map.addLayer({
         "id": "landuse_boundaries_on_roads_fraction",
         "type": "fill",
         "source": "landuse-analysis",
-        "source-layer": "roads_landuse_boundary_fraction_per_city",
+        "source-layer": "roads_landuse_boundary_fraction_per_cell",
         "filter": ["all"],
         "layout": {"visibility": "visible"},
         "paint": {
@@ -64,12 +64,11 @@ map.on('load', () => {
         }
     });
     map.addLayer({
-        "id": "roads_landuse_boundary_fraction_per_city_outline",
+        "id": "boundaries",
         "type": "line",
-        "source": "landuse-analysis",
-        "source-layer": "roads_landuse_boundary_fraction_per_city",
-        "minzoom": 6.5,
-        "filter": ["all"],
+        "source": "versatiles-shortbread",
+        "source-layer": "boundaries",
+        "filter": [ "all", [ "==", "admin_level", 2 ], [ "!=", "maritime", true ] ],
         "layout": {
             "visibility": "visible",
             "line-cap": "round",
@@ -77,10 +76,10 @@ map.on('load', () => {
         },
         "paint": {
             "line-color": "rgb(30, 30, 30)",
-            "line-width": 0.5
+            "line-width": 1.5
         }
     });
-    map.on('click', 'roads_landuse_boundary_fraction_per_city', (e) => {
+    map.on('click', 'roads_landuse_boundary_fraction_per_cell', (e) => {
         new maplibregl.Popup()
             .setLngLat(e.lngLat)
             .setDOMContent(buildLabel(e.features[0].properties))
