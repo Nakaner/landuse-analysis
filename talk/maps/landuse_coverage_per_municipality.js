@@ -29,7 +29,7 @@ var map = new maplibregl.Map({
     },
     style: "versatiles-style/neutrino.en.json",
     center: [9.09,48.98],
-    zoom: 7,
+    zoom: 4,
 });
 map.on('load', () => {
     map.addSource('landuse-analysis', {
@@ -77,6 +77,26 @@ map.on('load', () => {
             "line-color": "rgb(30, 30, 30)",
             "line-width": 1.5
         }
+    });
+    map.addLayer({
+        "id": "cities-overlay",
+        "type": "symbol",
+        "source-layer": "place_labels",
+        "filter": [ "all", [ "in", "kind", "city", "capital", "state_capital" ] ],
+        "layout": {
+            "text-field": "{name_en}",
+            "text-font": [ "noto_sans_regular" ],
+            "text-size": { "stops": [ [ 6, 17 ], [ 10, 20 ] ] }
+        },
+        "source": "versatiles-shortbread",
+        "paint": {
+            "icon-color": "#000000",
+            "text-color": "#000000",
+            "text-halo-color": "#ffffff",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+        },
+        "minzoom": 6
     });
     map.on('click', 'landuse_coverage_per_cell', (e) => {
         new maplibregl.Popup()

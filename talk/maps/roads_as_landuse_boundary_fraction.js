@@ -7,7 +7,7 @@ function round(value, decimals) {
 function buildLabel(properties) {
     var fraction = "n/a";
     if (properties.hasOwnProperty('roads_as_landuse_boundary_fraction')) {
-        fraction = round(properties.roads_as_landuse_boundary_fraction * 100, 1)
+        fraction = round(properties.roads_as_landuse_boundary_fraction * 100 * 2, 1)
     }
     const p1 = document.createElement("p");
     const p2 = document.createElement("p");
@@ -30,7 +30,7 @@ var map = new maplibregl.Map({
     style: "versatiles-style/neutrino.de.json",
     //style: "https://www.michreichert.de/projects/land-analysis-eu/landuse_coverage_per_municipality.json", // stylesheet location
     center: [9.09,48.98],
-    zoom: 7,
+    zoom: 4,
 });
 map.on('load', () => {
     map.addSource('landuse-analysis', {
@@ -51,25 +51,24 @@ map.on('load', () => {
                 ["get", "roads_as_landuse_boundary_fraction"],
                 0.0,
                 "#2c7bb6",
-                0.175,
+                0.09,
                 "#abd9e9",
-                0.35,
+                0.17,
                 "#ffffbf",
-                0.525,
+                0.26,
                 "#fdae61",
-                0.7,
+                0.35,
                 "#d7191c"
             ],
-            "fill-opacity": 1
+            "fill-opacity": 1.0
         }
     });
     map.addLayer({
-        "id": "roads_landuse_boundary_fraction_per_cell_outline",
+        "id": "boundaries",
         "type": "line",
-        "source": "landuse-analysis",
-        "source-layer": "roads_landuse_boundary_fraction_per_cell",
-        "minzoom": 6.5,
-        "filter": ["all"],
+        "source": "versatiles-shortbread",
+        "source-layer": "boundaries",
+        "filter": [ "all", [ "==", "admin_level", 2 ], [ "!=", "maritime", true ] ],
         "layout": {
             "visibility": "visible",
             "line-cap": "round",
@@ -77,8 +76,28 @@ map.on('load', () => {
         },
         "paint": {
             "line-color": "rgb(30, 30, 30)",
-            "line-width": 0.5
+            "line-width": 1.5
         }
+    });
+    map.addLayer({
+        "id": "cities-overlay",
+        "type": "symbol",
+        "source-layer": "place_labels",
+        "filter": [ "all", [ "in", "kind", "city", "capital", "state_capital" ] ],
+        "layout": {
+            "text-field": "{name_en}",
+            "text-font": [ "noto_sans_regular" ],
+            "text-size": { "stops": [ [ 6, 17 ], [ 10, 20 ] ] }
+        },
+        "source": "versatiles-shortbread",
+        "paint": {
+            "icon-color": "#000000",
+            "text-color": "#000000",
+            "text-halo-color": "#ffffff",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+        },
+        "minzoom": 6
     });
     map.on('click', 'roads_landuse_boundary_fraction_per_cell', (e) => {
         new maplibregl.Popup()
