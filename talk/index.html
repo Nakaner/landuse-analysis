@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Malen nach Zahlen – Landnutzungserfassung in OpenStreetMap in Deutschland</title>
+		<title>Landuse mapping in OpenStreetMap – Mapping Styles and Age of Data</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -19,22 +19,22 @@
 			<div class="slides">
                                 <section>
 				    <section>
-                                        <h1 style="font-size: 180%;">Malen nach Zahlen – Landnutzungserfassung in OpenStreetMap in Deutschland</h1>
+                                        <h1 style="font-size: 180%;">Landuse mapping in OpenStreetMap – Mapping Styles and Age of Data</h1>
 
                                         <p>Michael Reichert<br>
 
-                                        FOSSGIS-Konferenz 2024, Hamburg</p>
+                                        State of the Map Europe 2024, Łodz</p>
                                     </section>
 				    <section data-markdown>
-                                        ## Gliederung
+                                        ## Content
 
-                                        * Motivation
-                                        * Tagging
-                                        * Flächendeckung und Überlappung
-                                        * Multipolygon-Relationen
-                                        * Kleben oder Trennen
-                                        * Alter
-                                        * Technisches zur Auswertung
+                                        * motivation
+                                        * tagging
+                                        * coverage and overlapping polygons
+                                        * multipolygon relationen
+                                        * glued vs. unglued polygons
+                                        * data age
+                                        * technical details
                                     </section>
                                 </section>
                                 <section>
@@ -47,7 +47,7 @@
                                     </div>
                                 </section>
 				<section class="tags-slide">
-                                    <h2>Definiere Landnutzung …</h2>
+                                    <h2>Define Land Use …</h2>
                                     <p>
                                             <span class="osmtag">
                                                 landuse&nbsp;=&nbsp;*
@@ -60,7 +60,7 @@
                                         <div class="cols2" style="flex-grow: 1;">
                                             <p>Außer:</p>
                                             <p class="osmtag">landuse&nbsp;= <br><span class="strike">winter_sports</span></p>
-                                            <p class="osmtag">natural&nbsp;= <span class="strike">bay, strait, mountain_range, crater_rim, peninsula, valley</span></p>
+                                            <p class="osmtag">natural&nbsp;= <span class="strike">bay, strait, mountain_range, crater_rim, peninsula, valley, plain, fishing_bank, flat, isthmus</span></p>
                                             <p class="osmtag">military&nbsp;= <span class="strike">danger_area, nuclear_explosion_site, office</span></p>
                                         </div>
                                         <div class="cols2" style="flex-grow: 2;">
@@ -74,110 +74,110 @@
                                 </section>
                                 <section>
 				    <section data-markdown>
-                                        ## Featureklassen
+                                        ## Feature Classes
 
-                                        ![Verteilung der Featureklassen](plots/feature_classes_with_overlaps.svg)
+                                        ![Distribution of feature classes](plots/feature_classes_with_overlaps.svg)
                                     </section>
 				    <section>
-                                        <h2>Flächendeckung pro Gemeinde</h2>
+                                        <h2>Coverage</h2>
                                         <iframe src="maps/landuse_coverage_per_municipality.html" width="900" height="500"></iframe>
                                     </section>
 				    <section data-markdown>
-                                        ## Überlappende Landnutzung
+                                        ## Overlapping Landuse Polygons
                                         
-                                        ![Verteilung der Featureklassen](plots/overlaps_matrix.svg)
+                                        ![Distribution of feature classes](plots/overlaps_matrix.svg)
                                     </section>
 				    <section data-markdown>
-                                        ## Featureklassen
+                                        ## Feature Classes without Overlaps
 
-                                        ![Verteilung der Featureklassen](plots/feature_classes_without_overlaps.svg)
+                                        ![Distribution of feature classes](plots/feature_classes_without_overlaps.svg)
                                     </section>
                                 </section>
                                 <section style="font-size: 90%;" class="multipolygon-slides">
 				    <section>
-                                        <h2>Multipolygone (Einführung)</h2>
+                                        <h2>Multipolygons (Introduction)</h2>
 
-                                        <img alt="einfacher Way" src="img/Multipolygon_Illustration_0.svg">
+                                        <img alt="simple way" src="img/Multipolygon_Illustration_0.svg">
 
                                         <p>Way 1: <span class="osmtag">landuse=forest</span></p>
                                     </section>
 				    <section>
-                                        <h2>Multipolygone (Einführung)</h2>
+                                        <h2>Multipolygons (Introduction)</h2>
 
-                                        <img alt="Multipolygon-Relation mit einem inneren Ring" src="img/Multipolygon_Illustration_1.svg">
+                                        <img alt="Multipolygon relatin with one inner ring" src="img/Multipolygon_Illustration_1.svg">
 
                                         <p>Relation 1: <span class="osmtag">type=multipolygon</span> + <span class="osmtag">landuse=forest</span><br>
-                                        Way 1: keine Tags<br>
-                                        Way 2: irgendwelche Tags</p>
+                                        Way 1: no tags<br>
+                                        Way 2: any tags</p>
                                     </section>
 				    <section>
-                                        <h2>Multipolygone (Einführung)</h2>
+                                        <h2>Multipolygons (Introduction)</h2>
 
                                         <img alt="Multipolygon-Relation mit zwei inneren Ringen" src="img/Multipolygon_Illustration_2.svg">
 
                                         <p>Relation 1: <span class="osmtag">type=multipolygon</span> + <span class="osmtag">landuse=forest</span><br>
-                                        Way 1: keine Tags<br>
-                                        Way 2: irgendwelche Tags<br>
-                                        Way 3: irgendwelche Tags</p>
+                                        Way 1: no tags<br>
+                                        Way 2: any tags<br>
+                                        Way 3: any tags</p>
                                     </section>
 				    <section>
-                                        <h2>Multipolygone (Einführung)</h2>
+                                        <h2>Multipolygons (Introduction)</h2>
 
                                         <img alt="Multipolygon-Relation mit zwei äußeren Ways" src="img/Multipolygon_Illustration_3a.svg">
 
                                         <p>Relation 1: <span class="osmtag">type=multipolygon</span> + <span class="osmtag">landuse=forest</span><br>
-                                        Way 1: irgendwelche Tags, z.B. <span class="osmtag">highway=primary</span><br>
-                                        Way 2: irgendwelche Tags, z.B. <span class="osmtag">highway=track</span></p>
+                                        Way 1: any tags, e.g. <span class="osmtag">highway=primary</span><br>
+                                        Way 2: any tags, e.g. <span class="osmtag">highway=track</span></p>
                                     </section>
                                 </section>
                                 <section>
 				    <section data-markdown>
-                                        ## Anteil Multipolygone (Anzahl Objekte)
+                                        ## Proportion of  Multipolygons (Number of Objects)
 
-                                        ![Plot einfache Polygone vs. Multipolygone](plots/multipolygons_vs_simple_polygons_bar.svg)
+                                        ![Plot simple polygons vs. multipolygons](plots/multipolygons_vs_simple_polygons_bar.svg)
                                     </section>
 				    <section>
-                                        <h2>Unnötige Multipolygone (Definition)</h2>
+                                        <h2>Unnecessary Multipolygons (Definition)</h2>
 
                                         <img height="300" src="img/Multipolygon_Illustration_1_noetig.svg">
                                         <img height="300" src="img/Multipolygon_Illustration_3a_unnoetig.svg">
                                         <img height="300" src="img/Multipolygon_Illustration_4_unnoetig.svg">
                                     </section>
 				    <section data-markdown>
-                                        ## Unnötige Multipolygone pro Gemeinde
+                                        ## Unnecessary Multipolygons per Cell
 
                                         ![Plot Histogramm Multipolygonitis pro Gemeinde](plots/multipolygonitis_histogram.svg)
                                     </section>
 				    <section>
-                                        <h2>Unnötige Multipolygone pro Gemeinde</h2>
+                                        <h2>Unnecessary Multipolygons per Cell</h2>
                                         <iframe src="maps/multipolygonitis_score.html" width="900" height="500"></iframe>
                                     </section>
                                 </section>
                                 <section>
 				    <section>
-                                        <h2>Trennung von Verkehrswegen und Landnutzung</h2>
+                                        <h2>Separation of Roads and Landuse</h2>
 
                                         <img height="300" src="img/separated_landuse.svg">
                                         <img height="300" src="img/sticky_landuse.svg">
                                     </section>
 				    <section>
-                                        <h2>Mit Straßen verbundene Landnutzung</h2>
+                                        <h2>Landuse Connected with Roads</h2>
 
                                         <img height="400" src="img/sticky_landuse_josm.jpg">
                                     </section>
 				    <section>
-                                        <h2>Von Straßen getrennte Landnutzung</h2>
+                                        <h2>Landuse Separated from Roads</h2>
 
                                         <img height="400" src="img/separated_landuse_josm.jpg">
                                     </section>
 				    <section>
-                                        <h2>Von Straßen getrennte Landnutzung</h2>
+                                        <h2>Landuse Separated from Roads</h2>
 
                                         <img height="400" src="img/almost_touching_landuse_josm.jpg">
                                     </section>
 				    <section class="smaller-font">
-                                        <h2>Mit Straßen verklebte Landnutzung</h2>
-                                        <p style="font-size: 80%;">verklebten Straßen bezogen auf Netzlänge</p>
+                                        <h2>Roads Sharing Nodes with Landuse</h2>
+                                        <p style="font-size: 80%;">"glued" roads releative to road network length</p>
                                         <iframe src="maps/roads_as_landuse_boundary_fraction.html" width="900" height="500"></iframe>
                                     </section>
 				    <!--<section class="smaller-font">
@@ -188,61 +188,61 @@
                                 </section>
                                 <section>
 				    <section>
-                                        <h2>Wie alt sind unsere Wälder?</h2>
+                                        <h2>How Old Are Our Forests?</h2>
 
-                                        <img alt="Screenshot JOSM eines Waldes von 2008" src="img/landsat-wald.jpg" height="450">
+                                        <img alt="Screenshot JOSM of a forest from 2008" src="img/landsat-wald.jpg" height="450">
 
-                                        <p style="font-size: 60%;">Wald bei Eiterfeld (Kr. Fulda) aus dem Jahr 2008 (vermutlich mit Yahoo- oder Landsat-Bildern)</p>
+                                        <p style="font-size: 60%;">Forest near Eiterfeld (Hesse, Germany) from 2008 (likely mapped with Yahoo or Landsat imagery)</p>
                                     </section>
 				    <section data-markdown>
-                                        ## Alter eines Ways bestimmen?
+                                        ## How to Determine the Age of a Way?
 
-                                        Versionsgeschichte schwierig auszuwerten:
+                                        History is difficult to process:
 
-                                        * Teilen von Ways
-                                        * bei Relationen: Mitgliedschaftsänderungen
-                                        * mechanische Edits an Tags
-                                        * Hinzufügen einzelner Nodes
+                                        * splitting of ways
+                                        * relations: changes to the list of members
+                                        * mechanical edits on tags
+                                        * adding a single nodes
 
-                                        → Lösung: Zeitstempel der letzten Änderung der Nodes auswerten
+                                        → Solution: Timestamp of the nodes (latest version)
                                     </section>
 				    <section data-markdown>
-                                        ## Median-Alter der Nodes der Landuse-Polygone
+                                        ## Median Age of the Nodes of Landuse Polygons
 
-                                        ![Plot Histogramm Median des Node-Alters der Polygone](plots/polygon_median_age_histogram.svg)
+                                        ![plot histogramm median of node age of the polygons](plots/polygon_median_age_histogram.svg)
                                     </section>
 				    <section data-markdown>
-                                        ## Median-Alter der Landuse-Nodes der Gemeinden
+                                        ## Median Age of the Nodes of Landuse Polygons
 
-                                        ![Plot Histogramm Node-Alter](plots/node_median_age_histogram_municipality.svg)
+                                        ![plot histogramm node age](plots/node_median_age_histogram_municipality.svg)
                                     </section>
 				    <section>
-                                        <h2>Wo sind die alten Polygone?</h2>
-                                        <p>Median-Alter der Nodes pro Gemeinde</p>
+                                        <h2>Where are the old polygons?</h2>
+                                        <p>Median age of landuse nodes per cell</p>
                                         <iframe src="maps/landuse_node_age_per_municipality_unix.html" width="900" height="450"></iframe>
                                     </section>
                                 </section>
                                 <section>
 				    <section data-markdown>
-                                        ## Technik
+                                        ## Technical details
 
-                                        * Datenimport: Osm2pgsql, Flex-Output, eigene Konfiguration
-                                        * Auswertung: PostgreSQL und etwas Python (via Jupyter Notebook)
+                                        * Data import: Osm2pgsql, flex output, custom configuration, slim tables (for nodes!)
+                                        * Processing: PostgreSQL and some Python (via Jupyter Notebook)
                                         * Plots: Matplotlib
-                                        * Karten: Shortbread, Versatiles Neutrino, Martin, Maplibre GL JS
+                                        * Maps: Shortbread, Versatiles Neutrino, Martin, Maplibre GL JS
 
                                         https://github.com/nakaner/landuse-analysis
                                     </section>
 				    <section data-markdown>
-                                        ## Fragen?                                       
+                                        ## Questions?                            
 
                                         Michael Reichert
 
                                         osm-ml@michreichert.de
 
-                                        Folien: https://michreichert.de/projects/land-analysis-talk/
+                                        Slides: https://michreichert.de/projects/land-analysis-talk-sotm-eu/
 
-                                        Lizenz der Daten: ODbL 1.0, restlicher Vortrag: CC-BY 4.0
+                                        License of the data: ODbL 1.0, anything else: CC-BY 4.0
                                     </section>
                                 </section>
 			</div>
