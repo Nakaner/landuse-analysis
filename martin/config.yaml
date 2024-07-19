@@ -80,7 +80,7 @@ postgres:
       minzoom: 0
       
       # An integer specifying the maximum zoom level. MUST be >= minzoom
-      maxzoom: 14
+      maxzoom: 10
       
       # The maximum extent of available map tiles. Bounds MUST define an area
       # covered by all zoom levels. The bounds are represented in WGS:84
@@ -112,7 +112,7 @@ postgres:
       geometry_column: cell_geom
       id_column: ~
       minzoom: 0
-      maxzoom: 14
+      maxzoom: 10
       bounds: [-32.35,34.97,46.31,81.12]
       extent: 4096
       buffer: 64
@@ -132,7 +132,7 @@ postgres:
       geometry_column: cell_geom
       id_column: ~
       minzoom: 0
-      maxzoom: 14
+      maxzoom: 10
       bounds: [-32.35,34.97,46.31,81.12]
       extent: 4096
       buffer: 64
@@ -147,22 +147,25 @@ postgres:
         road_network_length: float8
         coverage_fraction: float8
         cell_id: int8
-    water:
+    landuse_node_age_per_cell_unix:
       schema: public
-      table: water_polygons_split
+      table: landuse_node_age_per_cell_unix
       srid: 4326
-      geometry_column: wkb_geometry
+      geometry_column: geom
       id_column: ~
       minzoom: 0
-      maxzoom: 14
+      maxzoom: 10
       bounds: [-32.35,34.97,46.31,81.12]
       extent: 4096
       buffer: 64
       clip_geom: true
       geometry_type: GEOMETRY
       properties:
-        ogc_fid: int4
-  
+        median_timestamp: int8
+        node_count: int8
+        area: float8
+        cell_id: int8
+
 #  # Associative arrays of function sources
 #  functions:
 #    function_source_id:
